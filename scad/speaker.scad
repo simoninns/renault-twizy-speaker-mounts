@@ -65,11 +65,11 @@ module speaker()
 
 module render_speaker()
 {
-    move([4,0,-50.1]) {
+    move([16,0,-50.1]) {
         xrot(180) zrot(45) color([0.3,0.3,0.3]) speaker();
     }
 
-    move([-130 + 4,0,-50.1]) {
+    move([-142 + 4,0,-50.1]) {
         xrot(180) zrot(45) color([0.3,0.3,0.3]) speaker();
     }
 }

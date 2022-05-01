@@ -75,7 +75,7 @@ module bracket_screw_mount(isRight)
 {
     twist = (isRight == true) ? -10:10;
     move([0,-3,0]) {
-        // Body screw hole
+        // Body screw hole at top of clip
         difference() {
             move([66,-35,-13.5 - 4.25]) xrot(twist) yrot(-10) cuboid([16,20,5], chamfer=0.5);
             move([67,-35,-7 - 8]) cyl(h=40,d=4);
@@ -84,15 +84,17 @@ module bracket_screw_mount(isRight)
             move([66,-25,-13.5 - 4.25]) cuboid([20,4,30]);
         }
         
+        // Main stem
         difference() {
-            move([60,-35,-30]) cuboid([5,16,40], chamfer=0.5);
-            move([60,-35,-11]) xrot(twist) yrot(-10) cuboid([10,20,10]);
+            move([74,-35,-30]) cuboid([5,16,40], chamfer=0.5);
+            move([60,-35,-11]) xrot(twist) yrot(-10) cuboid([40,20,10]);
         }
 
+        // Foot
         difference() {
-            move([55,-35,-47.5]) cuboid([10,16,5], chamfer=0.5);       
-            move([53.5,-32,-48.5]) cyl(h=20,d=3.5); // M3 Screw
-            move([53.5,-38,-48.5]) cyl(h=20,d=3.5); // Locator pin
+            move([68,-35,-47.5]) cuboid([10,16,5], chamfer=0.5);       
+            move([67.5,-32,-48.5]) cyl(h=20,d=3.5); // M3 Screw
+            move([67.5,-38,-48.5]) cyl(h=20,d=3.5); // Locator pin
         }  
     }
 }
@@ -154,22 +156,22 @@ module render_left_clips(toPrint)
 module g_mount()
 {
     // Speaker support
-    move([4,0,-51]) zrot(45) bracket_speaker_mount();
+    move([16,0,-51]) zrot(45) bracket_speaker_mount();
 
     // Join the catches to the speaker support
     difference() {
         union() {
             move([0,0,-53]) cuboid([22,136,6], chamfer=0.5); // Join the clips
-            move([54.5,-36,-53]) cuboid([16,20,6], chamfer=0.5); // Join the screw mount
+            move([67.5,-38,-53]) cuboid([18,16,6], chamfer=0.5); // Join the screw mount
         }
-        move([4,0,0]) zrot(45) move([0,-(117/2),-50]) cyl(h=20,d=4.5); // Clear the screw hole
+        move([16,0,0]) zrot(45) move([0,-(117/2),-50]) cyl(h=20,d=4.5); // Clear the screw hole
         
-        move([4,0,-50]) cyl(h=20, d=104);
+        move([16,0,-50]) cyl(h=20, d=104);
 
         // Add screw holes for catches and screw mount
         move([5,-58.5,-48.5]) cyl(h=20,d=3.5); // M3 Screw 1
         move([-5,58.5,-48.5]) cyl(h=20,d=3.5); // M3 Screw 2
-        move([53.5,-32 - 3,-48.5]) cyl(h=20,d=3.5); // M3 Screw (screw clip)
+        move([67.5,-32 - 3,-48.5]) cyl(h=20,d=3.5); // M3 Screw (screw clip)
     }
 }
 
@@ -180,7 +182,7 @@ module r_mount()
     // Locator pins
     move([-5,-58.5,-47.5]) cyl(h=5,d=3, chamfer2=0.5); // Locator pin
     move([+5,58.5,-47.5]) cyl(h=5,d=3, chamfer2=0.5); // Locator pin
-    move([53.5,-38 - 3,-47.5]) cyl(h=5,d=3, chamfer2=0.5); // Locator pin
+    move([67.5,-38 - 3,-47.5]) cyl(h=5,d=3, chamfer2=0.5); // Locator pin
 }
 
 module l_mount()
@@ -191,7 +193,7 @@ module l_mount()
         // Locator pins
         move([-5,-58.5,-47.5 - 11]) cyl(h=5,d=3, chamfer1=0.5); // Locator pin
         move([+5,58.5,-47.5 - 11]) cyl(h=5,d=3, chamfer1=0.5); // Locator pin
-        move([53.5,-38 - 3,-47.5 -11]) cyl(h=5,d=3, chamfer1=0.5); // Locator pin
+        move([67.5,-38 - 3,-47.5 -11]) cyl(h=5,d=3, chamfer1=0.5); // Locator pin
     }
 }
 
