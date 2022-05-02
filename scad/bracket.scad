@@ -28,7 +28,6 @@ use <BOSL/shapes.scad>
 
 module bracket_catch_top()
 {
-    move([0,-3.5,-6.5]) cuboid([22,5,20], chamfer=0.5);
     move([0,0,3]) cuboid([22,12,3], chamfer=0.5); // Over the Top
 
     difference() {
@@ -99,24 +98,31 @@ module bracket_screw_mount(isRight)
     }
 }
 
+// Long back
 module bracket_catch1()
 {
-    move([0,-62,0]) bracket_catch_top();
-    move([0,-65.5,-23.5]) cuboid([22,5,53], chamfer=0.5);
     difference() {
-        move([0,-60,-47.5]) cuboid([22,10,5], chamfer=0.5);
+        union() {
+            move([0,-62,0]) xrot(-6) bracket_catch_top();
+            move([0,-65.5,-23.5]) cuboid([22,5,53], chamfer=0.5);
+            move([0,-60,-47.5]) cuboid([22,10,5], chamfer=0.5);
+            
+        }
         move([5,-58.5,-48.5]) cyl(h=20,d=3.5); // M3 Screw
         move([-5,-58.5,-48.5]) cyl(h=20,d=3.5); // Locator pin
         move([4,0,-52.5]) cyl(h=20,d=110);
-    }    
+    }   
 }
 
+// Short front
 module bracket_catch2()
 {
-    move([0, 62,0]) zrot(180) bracket_catch_top();
-    move([0,65.5,-23.5]) cuboid([22,5,53], chamfer=0.5);
     difference() {
-        move([0,60,-47.5]) cuboid([22,10,5], chamfer=0.5);
+        union() {
+            move([0, 62,-12.5]) xrot(-6) zrot(180) bracket_catch_top();
+            move([0,65.5,-30]) cuboid([22,5,40], chamfer=0.5);
+            move([0,60,-47.5]) cuboid([22,10,5], chamfer=0.5);
+        }
         move([-5,58.5,-48.5]) cyl(h=20,d=3.5); // M3 Screw
         move([+5,58.5,-48.5]) cyl(h=20,d=3.5); // Locator pin
         move([4,0,-52.5]) cyl(h=20,d=110);
@@ -145,9 +151,11 @@ module render_left_clips(toPrint)
         move([60,-30,11]) rotate([90,-90,0]) bracket_catch2();
         move([-38,-30,46]) rotate([90,0,0]) bracket_screw_mount(false);
     } else {
-        move([-130,0,0]) zrot(180) {
+        move([-114,0,0]) {
             move([-8,0,0]) bracket_catch1();
             move([-8,0,0]) bracket_catch2();
+        }
+        move([-130,0,0]) zrot(180) {
             move([-8,76,0]) bracket_screw_mount(false);
         }
     }

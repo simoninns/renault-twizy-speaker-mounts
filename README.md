@@ -2,6 +2,8 @@
 ## Overview
 This project provides a set of speaker mounts for the Renault Twizy.  The mounts are designed to fit 4 inch Pioneer TS-G1020F speakers and are mounted in the original bracket position in the roof of the car.
 
+This project is open-source.  You can find the OpenSCAD source here: https://github.com/simoninns/renault-twizy-speaker-mounts
+
 ## Printing instructions
 The model has been printed and tested on the Prusa MK3S/MMU2S printer using Prusament PETG filament. All parts fit on a 20x20 printing bed.
 
