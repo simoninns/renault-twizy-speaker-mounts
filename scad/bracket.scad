@@ -42,19 +42,34 @@ module bracket_mounting_holes()
         difference() {
             union() {
                 hull() {
-                    move([0,+(117/2),0]) cyl(h=6,d=10);
-                    move([0,-(117/2),0]) cyl(h=6,d=10);
+                    move([0,+(117/2) + 2,0]) cyl(h=6,d=10);
+                    move([0,-(117/2) - 2,0]) cyl(h=6,d=10);
                 }
                 hull() {
-                    move([+(117/2),0,0]) cyl(h=6,d=10);
-                    move([-(117/2),0,0]) cyl(h=6,d=10);
+                    move([+(117/2) + 2,0,0]) cyl(h=6,d=10);
+                    move([-(117/2) - 2,0,0]) cyl(h=6,d=10);
                 }
             }
 
-            move([0,+(117/2),0]) cyl(h=10,d=4.5);
-            move([0,-(117/2),0]) cyl(h=10,d=4.5);
-            move([+(117/2),0,0]) cyl(h=10,d=4.5);
-            move([-(117/2),0,0]) cyl(h=10,d=4.5);
+            hull() {
+                move([0,+(117/2) - 2,0]) cyl(h=10,d=4.5);
+                move([0,+(117/2) + 2,0]) cyl(h=10,d=4.5);
+            }
+
+            hull() {
+                move([0,-(117/2) + 2,0]) cyl(h=10,d=4.5);
+                move([0,-(117/2) - 2,0]) cyl(h=10,d=4.5);
+            }
+
+            hull() {
+                move([+(117/2) + 2,0,0]) cyl(h=10,d=4.5);
+                move([+(117/2) - 2,0,0]) cyl(h=10,d=4.5);
+            }
+
+            hull() {
+                move([-(117/2) + 2,0,0]) cyl(h=10,d=4.5);
+                move([-(117/2) - 2,0,0]) cyl(h=10,d=4.5);
+            }
         }
     }
 }
@@ -172,7 +187,14 @@ module g_mount()
             move([0,0,-53]) cuboid([22,136,6], chamfer=0.5); // Join the clips
             move([67.5,-38,-53]) cuboid([18,16,6], chamfer=0.5); // Join the screw mount
         }
-        move([16,0,0]) zrot(45) move([0,-(117/2),-50]) cyl(h=20,d=4.5); // Clear the screw hole
+        
+        // Clear the screw hole
+        move([16,0,0]) zrot(45) move([0,-(117/2),-50]) {
+            hull() {
+                move([0, +2,0]) cyl(h=20,d=4.5);
+                move([0, -2,0]) cyl(h=20,d=4.5);
+            }
+        }
         
         move([16,0,-50]) cyl(h=20, d=104);
 
@@ -181,6 +203,8 @@ module g_mount()
         move([-5,58.5,-48.5]) cyl(h=20,d=3.5); // M3 Screw 2
         move([67.5,-32 - 3,-48.5]) cyl(h=20,d=3.5); // M3 Screw (screw clip)
     }
+
+    
 }
 
 module r_mount()
