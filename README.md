@@ -1,6 +1,11 @@
 # Renault Twizy Speaker Mounts
 ## Overview
-This project provides a set of speaker mounts for the Renault Twizy.  The mounts are designed to fit 4 inch Pioneer TS-G1020F speakers and are mounted in the original bracket position in the roof of the car.
+This project provides a set of speaker mounts for the Renault Twizy.  The mounts are designed to fit 4 inch speakers with 45 degree 170-172mm mounts and are mounted in the original bracket position in the roof of the car.
+
+Tested speakers include:
+
+* Pioneer TS-G1020F (good value)
+* Alpine SPG-10C2 (best performance)
 
 This project is open-source.  You can find the OpenSCAD source here: https://github.com/simoninns/renault-twizy-speaker-mounts
 
@@ -20,6 +25,8 @@ Print settings (for Prusa Slicer) are the same for all included parts:
 Since the bracket will need to withstand vibration, ensure that you use either nylon lock-nuts or thread-lock for all screws.
 
 The clips are attached to the bracket using M3x16mm screws.  The speaker is attached using 4xM4 screws.  The screw-heads should be on the underside of the bracket.
+
+Note that the two clip-on arms of the bracket have recesses for the Twizy's mounting point - these 'click' into place and should be firmly pressed into the car's mounting points.
 
 See the included pictures for more details.
 
